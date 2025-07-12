@@ -1856,6 +1856,8 @@
                     <xs:group ref="ControlTypeElements"/>
                     <xs:element name="OnAddGameData" type="OnAddGameData"/>
                     <xs:element name="OnCleared" type="OnCleared"/>
+                    <xs:element name="OnLabelTextChanged" type="OnLabelTextChanged"/>
+                    <xs:element name="OnLabelUserAreaCreated" type="OnLabelUserAreaCreated"/>
                 </xs:choice>
                 <xs:attribute name="font" type="string"/>
                 <xs:attribute name="headerRowSpacing" type="number"/>
@@ -2198,6 +2200,28 @@
         <xs:annotation>
             <xs:documentation>
                 local self, key, ctrl, alt, shift, command = ...
+            </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="OnSetControlEventHandler"/>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="OnLabelTextChanged">
+        <xs:annotation>
+            <xs:documentation>
+                local label = ...
+            </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="OnSetControlEventHandler"/>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="OnLabelUserAreaCreated">
+        <xs:annotation>
+            <xs:documentation>
+                local label, areaData, areaText, unscaledLeft, unscaledRight, unscaledTop, unscaledBottom, continuation = ...
             </xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
