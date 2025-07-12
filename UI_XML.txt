@@ -858,6 +858,14 @@ h5. OnKeyUp
 * [Inherits: OnSetControlEventHandler|#OnSetControlEventHandler]
 * ScriptArguments: local self, key, ctrl, alt, shift, command = ...
 
+h5. OnLabelTextChanged
+* [Inherits: OnSetControlEventHandler|#OnSetControlEventHandler]
+* ScriptArguments: local label = ...
+
+h5. OnLabelUserAreaCreated
+* [Inherits: OnSetControlEventHandler|#OnSetControlEventHandler]
+* ScriptArguments: local label, areaData, areaText, unscaledLeft, unscaledRight, unscaledTop, unscaledBottom, continuation = ...
+
 h5. OnLinkClicked
 * [Inherits: OnSetControlEventHandler|#OnSetControlEventHandler]
 * ScriptArguments: local self, linkData, linkText, button, ctrl, alt, shift, command = ...
@@ -1236,6 +1244,8 @@ h5. Tooltip
 * [Inherits: Control|#Control]
 * [Child: OnAddGameData|#OnAddGameData]
 * [Child: OnCleared|#OnCleared]
+* [Child: OnLabelTextChanged|#OnLabelTextChanged]
+* [Child: OnLabelUserAreaCreated|#OnLabelUserAreaCreated]
 * [Child: font|#Attributes]
 * [Child: headerRowSpacing|#Attributes]
 * [Child: headerVerticalOffset|#Attributes]
