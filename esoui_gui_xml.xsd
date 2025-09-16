@@ -925,6 +925,11 @@
         <xs:attribute name="locked" type="bool"/>
     </xs:complexType>
 
+    <xs:complexType name="CanvasSize">
+        <xs:attribute name="width" type="number"/>
+        <xs:attribute name="height" type="number"/>
+    </xs:complexType>
+
     <xs:complexType name="Caustic">
         <xs:attribute name="frequencyX" type="number"/>
         <xs:attribute name="frequencyY" type="number"/>
@@ -1550,6 +1555,18 @@
                 <xs:attribute name="text" type="string"/>
                 <xs:attribute name="textureFileReleaseOption" type="ReleaseReferenceOptions"/>
                 <xs:attribute name="verticalAlignment" type="TextAlignment"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="Canvas">
+        <xs:complexContent>
+            <xs:extension base="ControlType">
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:group ref="ControlTypeElements"/>
+                    <xs:element name="CanvasSize" type="CanvasSize"/>
+                </xs:choice>
+                <xs:attribute name="objectFit" type="ObjectFit"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -2816,6 +2833,7 @@
         <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="Backdrop" type="Backdrop"/>
             <xs:element name="Button" type="Button"/>
+            <xs:element name="Canvas" type="Canvas"/>
             <xs:element name="ColorSelect" type="ColorSelect"/>
             <xs:element name="Compass" type="Compass"/>
             <xs:element name="Control" type="Control"/>
