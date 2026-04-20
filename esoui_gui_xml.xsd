@@ -1412,11 +1412,11 @@
                     <xs:group ref="AnimationBaseTypeElements"/>
                 </xs:choice>
                 <xs:attribute name="endX" type="layout_measurement"/>
-                <xs:attribute name="endY" type="number"/>
-                <xs:attribute name="endZ" type="layout_measurement"/>
-                <xs:attribute name="startX" type="number"/>
+                <xs:attribute name="endY" type="layout_measurement"/>
+                <xs:attribute name="endZ" type="number"/>
+                <xs:attribute name="startX" type="layout_measurement"/>
                 <xs:attribute name="startY" type="layout_measurement"/>
-                <xs:attribute name="startZ" type="number"/>
+                <xs:attribute name="startZ" type="layout_measurement"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -1428,12 +1428,12 @@
                     <xs:group ref="AnimationBaseTypeElements"/>
                 </xs:choice>
                 <xs:attribute name="endX" type="layout_measurement"/>
-                <xs:attribute name="endY" type="number"/>
-                <xs:attribute name="endZ" type="layout_measurement"/>
+                <xs:attribute name="endY" type="layout_measurement"/>
+                <xs:attribute name="endZ" type="number"/>
                 <xs:attribute name="mode" type="RotationAnimationMode"/>
-                <xs:attribute name="startX" type="number"/>
+                <xs:attribute name="startX" type="layout_measurement"/>
                 <xs:attribute name="startY" type="layout_measurement"/>
-                <xs:attribute name="startZ" type="number"/>
+                <xs:attribute name="startZ" type="layout_measurement"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -1477,15 +1477,15 @@
                 <xs:attribute name="deltaX" type="layout_measurement"/>
                 <xs:attribute name="deltaXFromEnd" type="number"/>
                 <xs:attribute name="deltaY" type="layout_measurement"/>
-                <xs:attribute name="deltaYFromEnd" type="number"/>
+                <xs:attribute name="deltaYFromEnd" type="layout_measurement"/>
                 <xs:attribute name="deltaZ" type="number"/>
                 <xs:attribute name="deltaZFromEnd" type="number"/>
                 <xs:attribute name="endX" type="layout_measurement"/>
-                <xs:attribute name="endY" type="number"/>
-                <xs:attribute name="endZ" type="layout_measurement"/>
-                <xs:attribute name="startX" type="number"/>
+                <xs:attribute name="endY" type="layout_measurement"/>
+                <xs:attribute name="endZ" type="number"/>
+                <xs:attribute name="startX" type="layout_measurement"/>
                 <xs:attribute name="startY" type="layout_measurement"/>
-                <xs:attribute name="startZ" type="number"/>
+                <xs:attribute name="startZ" type="layout_measurement"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -1500,10 +1500,10 @@
                 <xs:attribute name="deltaX" type="layout_measurement"/>
                 <xs:attribute name="deltaXFromEnd" type="number"/>
                 <xs:attribute name="deltaY" type="layout_measurement"/>
-                <xs:attribute name="deltaYFromEnd" type="number"/>
+                <xs:attribute name="deltaYFromEnd" type="layout_measurement"/>
                 <xs:attribute name="endX" type="layout_measurement"/>
-                <xs:attribute name="endY" type="number"/>
-                <xs:attribute name="startX" type="number"/>
+                <xs:attribute name="endY" type="layout_measurement"/>
+                <xs:attribute name="startX" type="layout_measurement"/>
                 <xs:attribute name="startY" type="layout_measurement"/>
             </xs:extension>
         </xs:complexContent>
@@ -1903,6 +1903,7 @@
                     <xs:group ref="ControlTypeElements"/>
                 </xs:choice>
                 <xs:attribute name="objectFit" type="ObjectFit"/>
+                <xs:attribute name="slugAsset" type="string"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
