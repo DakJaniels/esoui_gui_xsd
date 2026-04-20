@@ -19,7 +19,31 @@
   <xs:simpleType name="layout_measurement">
     <xs:union>
       <xs:simpleType>
-        <xs:restriction base="xs:string"/>
+        <xs:restriction base="LuaVariable"/>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <!-- unit-suffixed layout measurement, e.g. "100ui" -->
+          <xs:pattern value="-?[0-9]+(\.[0-9]+)?ui"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <!-- unit-suffixed layout measurement, e.g. "50px" -->
+          <xs:pattern value="-?[0-9]+(\.[0-9]+)?px"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <!-- percent-based measurement, e.g. "25%" -->
+          <xs:pattern value="-?[0-9]+(\.[0-9]+)?%"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <!-- calculation measurement, e.g. "calc(50ui + 30px)" -->
+          <xs:pattern value="calc\([^)]*\)"/>
+        </xs:restriction>
       </xs:simpleType>
       <xs:simpleType>
         <xs:restriction base="xs:decimal"/>
@@ -1413,7 +1437,7 @@
                 </xs:choice>
                 <xs:attribute name="endX" type="layout_measurement"/>
                 <xs:attribute name="endY" type="layout_measurement"/>
-                <xs:attribute name="endZ" type="number"/>
+                <xs:attribute name="endZ" type="layout_measurement"/>
                 <xs:attribute name="startX" type="layout_measurement"/>
                 <xs:attribute name="startY" type="layout_measurement"/>
                 <xs:attribute name="startZ" type="layout_measurement"/>
@@ -1427,13 +1451,13 @@
                 <xs:choice minOccurs="0" maxOccurs="unbounded">
                     <xs:group ref="AnimationBaseTypeElements"/>
                 </xs:choice>
-                <xs:attribute name="endX" type="layout_measurement"/>
-                <xs:attribute name="endY" type="layout_measurement"/>
+                <xs:attribute name="endX" type="number"/>
+                <xs:attribute name="endY" type="number"/>
                 <xs:attribute name="endZ" type="number"/>
                 <xs:attribute name="mode" type="RotationAnimationMode"/>
-                <xs:attribute name="startX" type="layout_measurement"/>
-                <xs:attribute name="startY" type="layout_measurement"/>
-                <xs:attribute name="startZ" type="layout_measurement"/>
+                <xs:attribute name="startX" type="number"/>
+                <xs:attribute name="startY" type="number"/>
+                <xs:attribute name="startZ" type="number"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -1475,14 +1499,14 @@
                     <xs:group ref="AnimationBaseTypeElements"/>
                 </xs:choice>
                 <xs:attribute name="deltaX" type="layout_measurement"/>
-                <xs:attribute name="deltaXFromEnd" type="number"/>
+                <xs:attribute name="deltaXFromEnd" type="layout_measurement"/>
                 <xs:attribute name="deltaY" type="layout_measurement"/>
                 <xs:attribute name="deltaYFromEnd" type="layout_measurement"/>
                 <xs:attribute name="deltaZ" type="number"/>
                 <xs:attribute name="deltaZFromEnd" type="number"/>
                 <xs:attribute name="endX" type="layout_measurement"/>
                 <xs:attribute name="endY" type="layout_measurement"/>
-                <xs:attribute name="endZ" type="number"/>
+                <xs:attribute name="endZ" type="layout_measurement"/>
                 <xs:attribute name="startX" type="layout_measurement"/>
                 <xs:attribute name="startY" type="layout_measurement"/>
                 <xs:attribute name="startZ" type="layout_measurement"/>
@@ -1498,7 +1522,7 @@
                 </xs:choice>
                 <xs:attribute name="anchorIndex" type="integer"/>
                 <xs:attribute name="deltaX" type="layout_measurement"/>
-                <xs:attribute name="deltaXFromEnd" type="number"/>
+                <xs:attribute name="deltaXFromEnd" type="layout_measurement"/>
                 <xs:attribute name="deltaY" type="layout_measurement"/>
                 <xs:attribute name="deltaYFromEnd" type="layout_measurement"/>
                 <xs:attribute name="endX" type="layout_measurement"/>
