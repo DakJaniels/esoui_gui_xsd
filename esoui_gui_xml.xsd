@@ -595,6 +595,7 @@
                     <xs:enumeration value="UNIT_IDLE_HEALTHY"/>
                     <xs:enumeration value="UNIT_IDLE_WEAK"/>
                     <xs:enumeration value="VENDOR"/>
+                    <xs:enumeration value="WORLD_EVENT_MAP_LOCATION_ACTIVE"/>
                     <xs:enumeration value="WORLD_EVENT_POI_ACTIVE"/>
                     <xs:enumeration value="ZONE_STORY_SUGGESTED_AREA"/>
                 </xs:restriction>
