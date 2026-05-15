@@ -284,10 +284,10 @@
             </xs:simpleType>
             <xs:simpleType>
                 <xs:restriction base="xs:string">
-                    <xs:enumeration value="DT_HIGH"/>
-                    <xs:enumeration value="DT_LOW"/>
-                    <xs:enumeration value="DT_MEDIUM"/>
-                    <xs:enumeration value="DT_PARENT"/>
+                    <xs:enumeration value="HIGH"/>
+                    <xs:enumeration value="LOW"/>
+                    <xs:enumeration value="MEDIUM"/>
+                    <xs:enumeration value="PARENT"/>
                 </xs:restriction>
             </xs:simpleType>
         </xs:union>
