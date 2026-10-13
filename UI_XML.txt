@@ -33,8 +33,8 @@ h4. Attributes:
 * deltaXFromEnd *number*
 * deltaY *number*
 * deltaY *layout_measurement*
-* deltaYFromEnd *layout_measurement*
 * deltaYFromEnd *number*
+* deltaYFromEnd *layout_measurement*
 * deltaZ *number*
 * deltaZFromEnd *number*
 * desaturation *number*
@@ -65,11 +65,11 @@ h4. Attributes:
 * endWidth *number*
 * endX *number*
 * endX *layout_measurement*
-* endY *layout_measurement*
 * endY *number*
+* endY *layout_measurement*
 * endYaw *number*
-* endZ *number*
 * endZ *layout_measurement*
+* endZ *number*
 * excludeFromFlexContainer *bool*
 * excludeFromResizeToFitExtents *bool*
 * fadeOutGainColor *string*
@@ -149,6 +149,7 @@ h4. Attributes:
 * selectionColor *string*
 * shaderEffectType *[ShaderEffectType|#ShaderEffectType]*
 * shape *[ShapeType|#ShapeType]*
+* slugAsset *string*
 * smallCaps *bool*
 * smoothingEnabled *bool*
 * space *[Space|#Space]*
@@ -166,13 +167,13 @@ h4. Attributes:
 * startSkewX *number*
 * startSkewY *number*
 * startWidth *number*
-* startX *layout_measurement*
 * startX *number*
+* startX *layout_measurement*
 * startY *number*
 * startY *layout_measurement*
 * startYaw *number*
-* startZ *layout_measurement*
 * startZ *number*
+* startZ *layout_measurement*
 * step *number*
 * storeLineEndingCharacterIndices *bool*
 * strikethrough *bool*
@@ -335,6 +336,15 @@ h5. Callback
 
 h5. Callbacks
 * [Child: Callback|#Callback]
+
+h5. Canvas
+* [Inherits: Control|#Control]
+* [Child: CanvasSize|#CanvasSize]
+* [Child: objectFit|#Attributes]
+
+h5. CanvasSize
+* _attribute:_ *number* _width_
+* _attribute:_ *number* _height_
 
 h5. Caustic
 * _attribute:_ *number* _frequencyX_
@@ -506,6 +516,7 @@ h5. Control
 h5. Controls
 * [Child: Backdrop|#Backdrop]
 * [Child: Button|#Button]
+* [Child: Canvas|#Canvas]
 * [Child: ColorSelect|#ColorSelect]
 * [Child: Compass|#Compass]
 * [Child: Control|#Control]
@@ -1349,6 +1360,7 @@ h5. UpdateFunction
 h5. Vector
 * [Inherits: Control|#Control]
 * [Child: objectFit|#Attributes]
+* [Child: slugAsset|#Attributes]
 
 h5. Wave
 * _attribute:_ *number* _angleRadians_
@@ -1369,4 +1381,3 @@ h5. WaveDampingCoefficients
 * _attribute:_ *number* _maxY_
 
 h5. sentinel_element
-
