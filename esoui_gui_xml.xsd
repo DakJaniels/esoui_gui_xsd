@@ -87,6 +87,7 @@
                     <xs:enumeration value="ALLOW_MARKUP_TYPE_ALL"/>
                     <xs:enumeration value="ALLOW_MARKUP_TYPE_COLOR_ONLY"/>
                     <xs:enumeration value="ALLOW_MARKUP_TYPE_NONE"/>
+                    <xs:enumeration value="ALLOW_MARKUP_TYPE_NO_EXCEPTIONS"/>
                 </xs:restriction>
             </xs:simpleType>
         </xs:union>
@@ -587,6 +588,7 @@
                     <xs:enumeration value="RETURN_DAGGERFALL_COVENANT"/>
                     <xs:enumeration value="RETURN_EBONHEART_PACT"/>
                     <xs:enumeration value="RETURN_NEUTRAL"/>
+                    <xs:enumeration value="SCRIPTED_EVENT"/>
                     <xs:enumeration value="SKYSHARD_COMPLETE"/>
                     <xs:enumeration value="SKYSHARD_SEEN"/>
                     <xs:enumeration value="SKYSHARD_SUGGESTED"/>
@@ -712,6 +714,22 @@
                 <xs:restriction base="xs:string">
                     <xs:enumeration value="POLYGON_POINT_LAYOUT_CLOCKWISE"/>
                     <xs:enumeration value="POLYGON_POINT_LAYOUT_COUNTER_CLOCKWISE"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:simpleType name="QRCodeErrorCorrectionLevel">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="integer"/>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="QR_CODE_ERROR_CORRECTION_LEVEL_HIGH"/>
+                    <xs:enumeration value="QR_CODE_ERROR_CORRECTION_LEVEL_LOW"/>
+                    <xs:enumeration value="QR_CODE_ERROR_CORRECTION_LEVEL_MEDIUM"/>
+                    <xs:enumeration value="QR_CODE_ERROR_CORRECTION_LEVEL_QUARTILE"/>
                 </xs:restriction>
             </xs:simpleType>
         </xs:union>
@@ -1142,6 +1160,8 @@
         <xs:attribute name="addedAnimation" type="string"/>
         <xs:attribute name="removedAnimation" type="string"/>
         <xs:attribute name="animationTarget" type="MapPinAnimationTarget"/>
+        <xs:attribute name="layer" type="DrawLayer"/>
+        <xs:attribute name="drawLevelOffsetBase" type="integer"/>
     </xs:complexType>
 
     <xs:complexType name="MotionBlur">
@@ -1163,6 +1183,11 @@
     <xs:complexType name="PressedOffset">
         <xs:attribute name="x" type="layout_measurement"/>
         <xs:attribute name="y" type="layout_measurement"/>
+    </xs:complexType>
+
+    <xs:complexType name="QRText">
+        <xs:attribute name="text" type="string"/>
+        <xs:attribute name="errorCorrectionLevel" type="QRCodeErrorCorrectionLevel"/>
     </xs:complexType>
 
     <xs:complexType name="RadialBlur">
@@ -1771,6 +1796,19 @@
         </xs:complexContent>
     </xs:complexType>
 
+    <xs:complexType name="QRCode">
+        <xs:complexContent>
+            <xs:extension base="ControlType">
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:group ref="ControlTypeElements"/>
+                    <xs:element name="CanvasSize" type="CanvasSize"/>
+                    <xs:element name="QRText" type="QRText"/>
+                </xs:choice>
+                <xs:attribute name="objectFit" type="ObjectFit"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
     <xs:complexType name="Scroll">
         <xs:complexContent>
             <xs:extension base="ControlType">
@@ -2078,6 +2116,17 @@
         <xs:annotation>
             <xs:documentation>
                 local self, r, g, b = ...
+            </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="OnSetControlEventHandler"/>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="OnDimensionsChanged">
+        <xs:annotation>
+            <xs:documentation>
+                local self, newWidth, oldWidth, newHeight, oldHeight = ...
             </xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
@@ -2696,6 +2745,7 @@
             <xs:element name="HitInsets" type="HitInsets"/>
             <xs:element name="MotionBlur" type="MotionBlur"/>
             <xs:element name="OnChar" type="OnChar"/>
+            <xs:element name="OnDimensionsChanged" type="OnDimensionsChanged"/>
             <xs:element name="OnDragStart" type="OnDragStart"/>
             <xs:element name="OnEffectivelyHidden" type="OnEffectivelyHidden"/>
             <xs:element name="OnEffectivelyShown" type="OnEffectivelyShown"/>
@@ -2870,6 +2920,7 @@
             <xs:element name="Line" type="Line"/>
             <xs:element name="MapDisplay" type="MapDisplay"/>
             <xs:element name="Polygon" type="Polygon"/>
+            <xs:element name="QRCode" type="QRCode"/>
             <xs:element name="Scroll" type="Scroll"/>
             <xs:element name="Slider" type="Slider"/>
             <xs:element name="StatusBar" type="StatusBar"/>

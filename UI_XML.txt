@@ -439,6 +439,7 @@ h5. Control
 * [Child: HitInsets|#HitInsets]
 * [Child: MotionBlur|#MotionBlur]
 * [Child: OnChar|#OnChar]
+* [Child: OnDimensionsChanged|#OnDimensionsChanged]
 * [Child: OnDragStart|#OnDragStart]
 * [Child: OnEffectivelyHidden|#OnEffectivelyHidden]
 * [Child: OnEffectivelyShown|#OnEffectivelyShown]
@@ -527,6 +528,7 @@ h5. Controls
 * [Child: Line|#Line]
 * [Child: MapDisplay|#MapDisplay]
 * [Child: Polygon|#Polygon]
+* [Child: QRCode|#QRCode]
 * [Child: Scroll|#Scroll]
 * [Child: Slider|#Slider]
 * [Child: StatusBar|#StatusBar]
@@ -764,6 +766,8 @@ h5. MapPinType
 * _attribute:_ *string* _addedAnimation_
 * _attribute:_ *string* _removedAnimation_
 * _attribute:_ *[MapPinAnimationTarget|#MapPinAnimationTarget]* _animationTarget_
+* _attribute:_ *[DrawLayer|#DrawLayer]* _layer_
+* _attribute:_ *integer* _drawLevelOffsetBase_
 
 h5. MotionBlur
 * _attribute:_ *number* _blurVectorXAsAPercentageOfControlWidth_
@@ -801,6 +805,10 @@ h5. OnClicked
 h5. OnColorSelected
 * [Inherits: OnSetControlEventHandler|#OnSetControlEventHandler]
 * ScriptArguments: local self, r, g, b = ...
+
+h5. OnDimensionsChanged
+* [Inherits: OnSetControlEventHandler|#OnSetControlEventHandler]
+* ScriptArguments: local self, newWidth, oldWidth, newHeight, oldHeight = ...
 
 h5. OnDownArrow
 * [Inherits: OnSetControlEventHandler|#OnSetControlEventHandler]
@@ -1059,6 +1067,16 @@ h5. Polygon
 h5. PressedOffset
 * _attribute:_ *layout_measurement* _x_
 * _attribute:_ *layout_measurement* _y_
+
+h5. QRCode
+* [Inherits: Control|#Control]
+* [Child: CanvasSize|#CanvasSize]
+* [Child: QRText|#QRText]
+* [Child: objectFit|#Attributes]
+
+h5. QRText
+* _attribute:_ *string* _text_
+* _attribute:_ *[QRCodeErrorCorrectionLevel|#QRCodeErrorCorrectionLevel]* _errorCorrectionLevel_
 
 h5. RadialBlur
 * _attribute:_ *number* _originX_
